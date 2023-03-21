@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dynamic clock</title>
+
+</head>
+<style>
+    .body {
+        background-color: skyblue;
+    }
+    
+    .main {
+        width: 350px;
+        height: 50px;
+        border: 2px solid black;
+        margin: auto;
+        margin-top: 150px;
+        background-color: rgb(219, 115, 133);
+    }
+    
+    .main1,
+    .main2,
+    .main3,
+    .main4 {
+        width: 83.5px;
+        height: 48px;
+        border: 2px solid purple;
+        float: left;
+        text-align: center;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 25px;
+        font-weight: bold;
+        position: relative;
+    }
+</style>
+
+<body onload="showtime()" class="body">
+    <div style="text-align: center; ">
+        <h1>Dynamic Clock by Ashish Chaudhari</h1>
+    </div>
+    <div class="main">
+        <div class="main1">1</div>
+        <div class="main2">2</div>
+        <div class="main3">3</div>
+        <div class="main4">4</div>
+    </div>
+</body>
+<script>
+    function showtime() {
+
+
+        var d = new Date();
+        var h = d.getHours();
+        var m = d.getMinutes();
+        var s = d.getSeconds();
+        var session = "AM";
+
+        if (h > 12) {
+            session = "PM";
+        }
+        if (h >= 12) {
+            h = h - 12;
+        }
+
+        h = (h < 10) ? "0" + h : h;
+        m = (m < 10) ? "0" + m : m;
+        s = (s < 10) ? "0" + s : s;
+
+        document.getElementsByClassName('main1')[0].innerHTML = h + " Hr";
+        document.getElementsByClassName('main2')[0].innerHTML = m + " M";
+        document.getElementsByClassName('main3')[0].innerHTML = s + " S";
+        document.getElementsByClassName('main4')[0].innerHTML = session;
+        setTimeout(showtime, 1000);
+
+    }
+</script>
+
+</html>
